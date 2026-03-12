@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Watch Anime</title>
+</head>
+<body>
+
+<h1>Episode Player</h1>
+<iframe id="player" width="900" height="500" allowfullscreen></iframe>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const video = params.get("video");
+document.getElementById("player").src = video;
+</script>
+
+</body>
+</html>
