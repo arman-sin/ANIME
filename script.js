@@ -33,3 +33,32 @@ async function searchAnime(){
     `;
   });
 }
+async function loadAnimePages(){
+
+const container = document.getElementById("animeList");
+
+for(let page=1; page<=40; page++){   // 40 pages ≈ 1000 anime
+
+const res = await fetch(`https://api.jikan.moe/v4/anime?page=${page}`);
+const data = await res.json();
+
+data.data.forEach(anime=>{
+
+container.innerHTML += `
+<div class="card">
+
+<img src="${anime.images.jpg.image_url}">
+<h3>${anime.title}</h3>
+<p>⭐ ${anime.score || "N/A"}</p>
+<p>${anime.year || ""}</p>
+
+</div>
+`;
+
+});
+
+}
+
+}
+
+loadAnimePages();
